@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdio.h>                       // для printf()
-//lox
-int main() { //lox
+                          
+int main() { /*
+LOX*/
    char *str = "string example";
    char  buf[32];                        // буфер размером больше строки
 

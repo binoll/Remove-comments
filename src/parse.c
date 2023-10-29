@@ -12,23 +12,35 @@ FILE* get_file(const char* path, const char* mode) {
 	return file;
 }
 
-void remove_comments(const char* line, char* new_line, const size_t count, size_t* new_count) {
-	int i = 0;
+void remove_comments(const char* line, char* new_line) {
+	static bool is_multiline;
 	bool is_string = false;
 
 	strcpy(new_line, line);
-	while(new_line[i] != '\0') {
-		if (new_line[i] == '\"') {
+	for(int i = 0; new_line[i] != '\0'; ++i) {
+		if(new_line[i] == '\"') {
 			is_string = true;
 		}
-		if(!is_string && new_line[i] == '/' && new_line[i + 1] == '/') {
+		if(!is_string && !is_multiline && new_line[i] == '/' && new_line[i + 1] == '/') {
 			new_line[i] = '\n';
 			new_line[i + 1] = '\0';
 		}
-		++i;
+		if(!is_string && new_line[i] == '/' && new_line[i + 1] == '*') {
+			is_multiline = true;
+			new_line[i] = ' ';
+		} else if(!is_string && new_line[i] == '*' && new_line[i + 1] == '/') {
+			new_line[i] = '\n';
+			new_line[i + 1] = '\0';
+			is_multiline = false;
+		} else if(!is_string && is_multiline) {
+			if (new_line[i + 1] == '\0') {
+				new_line[i] = '\n';
+				new_line[i + 1] = '\0';
+			} else {
+				new_line[i] = ' ';
+			}
+		}
 	}
-	*new_count = i;
-	return;
 }
 
 int parse_file(FILE* file_src, FILE* file_dist) {
@@ -46,10 +58,9 @@ int parse_file(FILE* file_src, FILE* file_dist) {
 
 	while((count = getline(&line, &len, file_src)) != -1) {
 		char new_line[count];
-		size_t new_count = 0;
 
-		remove_comments(line, new_line, count, &new_count);
-		fwrite(new_line, sizeof(char), new_count, file_dist);
+		remove_comments(line, new_line);
+		fwrite(new_line, sizeof(char), strlen(new_line), file_dist);
 	}
 	fclose(file_src);
 	fclose(file_dist);

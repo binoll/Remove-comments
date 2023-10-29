@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdio.h>                       
-
-int main() { 
+                          
+int main() {    
+   
    char *str = "string example";
    char  buf[32];                        
 
