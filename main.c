@@ -1,5 +1,4 @@
 // Copyright 2023 binoll
-#include "lib.h"
 #include "src/parse.h"
 
 int main(int argc, char* argv[]) {
@@ -24,3 +23,4 @@ int main(int argc, char* argv[]) {
 	parse_file(file_src, file_dist);
 	return EXIT_SUCCESS;
 }
+
