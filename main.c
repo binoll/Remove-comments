@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
 	FILE* file_dist = NULL;
 
 	if(argc != 3) {
-		printf("Error! Usage: %s\n", name);
+		printf("Error! Usage: %s \"path_src\" \"path_dist\"\n", name);
 		exit(EXIT_FAILURE);
 	}
 	if((file_src = get_file(path_src, "r")) == NULL) {

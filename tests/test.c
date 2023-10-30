@@ -1,8 +1,11 @@
 #include <string.h>
-#include <stdio.h>                       // для printf()
-                          
-int main() { /*
-LOX*/
+#include <stdio.h>                       /////////// для printf()
+/*
+LOX
+*/              
+int main() { /* /*
+				vssdvdfbdbmkfmbkdfnbfk			LOX
+						*/*/
    char *str = "string example";
    char  buf[32];                        // буфер размером больше строки
 
