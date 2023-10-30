@@ -23,4 +23,3 @@ int main(int argc, char* argv[]) {
 	parse_file(file_src, file_dist);
 	return EXIT_SUCCESS;
 }
-

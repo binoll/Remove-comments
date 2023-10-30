@@ -66,4 +66,3 @@ int parse_file(FILE* file_src, FILE* file_dist) {
 	fclose(file_dist);
 	return EXIT_SUCCESS;
 }
-
