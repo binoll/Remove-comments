@@ -1,19 +1,27 @@
 # Remove comments 
 
 ## Overview
-A program for deleting comments. Designed for sources: C/C++/Java.
+A program to remove all comments from the source code. It is intended for use with source texts: C/C++/Java.
+The "tests" directory contains examples of source files before and after using this program.
 
-## Build the project
+**ATTENTION**: It is important that the source code is syntactically correct!
+
+## Build
 From the root of the repository, run following commands:
 
 ```bash
 mkdir build && cd build
+```
+
+```bash
 cmake ..
+```
+
+```bash
 cmake --build .
 ```
 
 ## Run
-To start the program:
 
 ```bash
 ./remove

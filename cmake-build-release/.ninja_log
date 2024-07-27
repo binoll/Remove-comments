@@ -1,0 +1,4 @@
+# ninja log v6
+0	20	1722083318979487490	CMakeFiles/remove.dir/main.c.o	e2e05147bdabff27
+0	30	1722083318979487490	CMakeFiles/remove.dir/src/parse.c.o	9a296625ba6fab63
+30	41	1722083319007491799	remove	8244f732da732c51
