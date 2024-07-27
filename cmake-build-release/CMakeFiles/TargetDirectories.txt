@@ -1,3 +1,0 @@
-/home/binoll/Desktop/Git-projects/Remove-comments/cmake-build-release/CMakeFiles/remove.dir
-/home/binoll/Desktop/Git-projects/Remove-comments/cmake-build-release/CMakeFiles/edit_cache.dir
-/home/binoll/Desktop/Git-projects/Remove-comments/cmake-build-release/CMakeFiles/rebuild_cache.dir
