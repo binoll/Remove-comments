@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]) {
   if (argc != 4) {
     fprintf(stderr, "[-] Usage: %s <language> <input> <output>\n", argv[0]);
-    fprintf(stderr, "    Languages: c, python, asm\n");
+    fprintf(stderr, "    Languages: c, python, asm, java\n");
     return EXIT_FAILURE;
   }
 
@@ -17,6 +17,8 @@ int main(int argc, char *argv[]) {
     lang = LANG_PYTHON;
   else if (strcmp(argv[1], "asm") == 0)
     lang = LANG_ASM;
+  else if (strcmp(argv[1], "java") == 0)
+    lang = LANG_JAVA;
   else {
     fprintf(stderr, "[-] Unknown language: %s\n", argv[1]);
     return EXIT_FAILURE;

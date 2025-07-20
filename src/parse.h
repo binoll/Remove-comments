@@ -3,11 +3,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-typedef enum { LANG_C, LANG_PYTHON, LANG_ASM } Language;
+typedef enum { LANG_C, LANG_PYTHON, LANG_ASM, LANG_JAVA } Language;
 
 typedef struct CommentState {
-  bool in_comment;   // Для однострочных комментариев
-  bool in_multiline; // Для многострочных комментариев
+  bool in_multiline; // Внутри многострочного комментария
   bool in_string;    // Внутри строки
   bool escape_next;  // Экранирование следующего символа
   char string_quote; // Тип кавычки для строки

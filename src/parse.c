@@ -23,7 +23,7 @@ void remove_comments(char *line, CommentState *state, Language lang) {
     }
 
     // Обработка начала строк
-    if (!state->in_comment && !state->in_multiline) {
+    if (!state->in_multiline) {
       if (line[i] == '"' || line[i] == '\'') {
         state->in_string = true;
         state->string_quote = line[i];
@@ -34,6 +34,7 @@ void remove_comments(char *line, CommentState *state, Language lang) {
     // Обработка комментариев
     switch (lang) {
     case LANG_C:
+    case LANG_JAVA:
       if (state->in_multiline) {
         if (line[i] == '*' && line[i + 1] == '/') {
           state->in_multiline = false;
@@ -53,13 +54,7 @@ void remove_comments(char *line, CommentState *state, Language lang) {
       break;
 
     case LANG_PYTHON:
-      if (state->in_multiline) {
-        if (line[i] == '\\' && line[i + 1] == '\n') {
-          i++; // Игнорируем экранированный перенос
-        } else if (line[i] == '\n') {
-          state->in_multiline = false;
-        }
-      } else if (line[i] == '#') {
+      if (line[i] == '#') {
         memset(line + i, ' ', strlen(line + i));
         return;
       } else if (line[i] == '\\' && line[i + 1] == '\n') {
@@ -81,7 +76,7 @@ int parse_file(FILE *file_src, FILE *file_dist, Language lang) {
   char *line = NULL;
   size_t len = 0;
   ssize_t read;
-  CommentState state = {false, false, false, false, 0};
+  CommentState state = {false, false, false, 0};
 
   while ((read = getline(&line, &len, file_src)) != -1) {
     if (read == -1)
