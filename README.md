@@ -30,5 +30,5 @@ cmake --build .
 ## Run
 
 ```bash
-./remove
+./comment_remover
 ```
