@@ -6,6 +6,12 @@ The "tests" directory contains examples of source files before and after using t
 
 **ATTENTION**: It is important that the source code is syntactically correct!
 
+## Dependencies
+
+```bash
+sudo apt install cmake gcc -y
+```
+
 ## Build
 From the root of the repository, run following commands:
 

@@ -1,10 +1,20 @@
-// Copyright 2023 binoll
 #pragma once
 
-#include "../lib.h"
+#include <stdbool.h>
+#include <stdio.h>
 
-extern FILE* get_file(const char*, const char*);
+typedef enum { LANG_C, LANG_PYTHON, LANG_ASM } Language;
 
-extern void remove_comments(char*);
+typedef struct CommentState {
+  bool in_comment;   // Для однострочных комментариев
+  bool in_multiline; // Для многострочных комментариев
+  bool in_string;    // Внутри строки
+  bool escape_next;  // Экранирование следующего символа
+  char string_quote; // Тип кавычки для строки
+} CommentState;
 
-extern int parse_file(FILE*, FILE*);
+extern FILE *get_file(const char *, const char *);
+
+extern void remove_comments(char *, CommentState *, Language);
+
+extern int parse_file(FILE *, FILE *, Language);
